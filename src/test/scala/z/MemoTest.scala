@@ -2,6 +2,7 @@ package z
 
 import org.scalatest.FunSuite
 
+import scala.annotation.tailrec
 import scalaz._
 
 class MemoTest extends FunSuite {
@@ -9,9 +10,18 @@ class MemoTest extends FunSuite {
   val targetNumber: BigInt = BigInt(63245986)
   var computeCount: Int = 0
 
+  def fibonacci(n: Long): BigInt = {
+    @tailrec
+    def loop(n: Long, a: Long, b: Long): BigInt = n match {
+      case 0 => a
+      case _ => loop(n - 1, b, a + b)
+    }
+    loop(n, 0, 1)
+  }
+
   def computeFibonacci(n: Long): BigInt = {
     computeCount = computeCount + 1
-    val f = Fibonacci.tailrec(n)
+    val f = fibonacci(n)
     println(s"Computed fibonacci number, $f, from seed number, $n.")
     f
   }
