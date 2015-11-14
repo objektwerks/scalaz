@@ -7,7 +7,7 @@ resolvers ++= Seq(
 )
 libraryDependencies ++= {
   Seq(
-    "org.scalaz" % "scalaz-core_2.11" % "7.1.4",
+    "org.scalaz" % "scalaz-core_2.11" % "7.1.5",
     "org.scalatest" % "scalatest_2.11" % "2.2.5" % "test"
   )
 }
