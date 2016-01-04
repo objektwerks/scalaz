@@ -28,12 +28,12 @@ object Print {
 
 object PrintSyntax {
   implicit class PrintOps[A](value: A) {
-    def format(implicit formatter: Printable[A]): String = {
-      formatter.format(value)
+    def format(implicit printable: Printable[A]): String = {
+      printable.format(value)
     }
 
-    def print(implicit printer: Printable[A]): Unit = {
-      printer.format(value)
+    def print(implicit printable: Printable[A]): Unit = {
+      println(printable.format(value))
     }
   }
 }
@@ -54,5 +54,6 @@ class TypeTest extends FunSuite {
     val dog = Dog("whilhelm", 33, "white")
     assert(dog.format == "Name: whilhelm, Age: 33, Color: white.")
     Print.print(dog)
+    dog.print
   }
 }
