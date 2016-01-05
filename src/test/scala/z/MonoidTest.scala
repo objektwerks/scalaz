@@ -14,7 +14,7 @@ object Data {
 }
 
 class MonoidTest extends FunSuite {
-  def add[A: Monoid](items: A*): A = items.foldLeft(mzero[A]){ _ |+| _ }
+  def sum[A: Monoid](items: A*): A = items.foldLeft(mzero[A]){ _ |+| _ }
 
   test("int") {
     3 assert_=== Monoid[Int].append(1, 2)
@@ -32,7 +32,7 @@ class MonoidTest extends FunSuite {
   }
 
   test("case class") {
-    assert(add(Data(1), Data(2), Data(3)) == Data(6))
-    assert(add(List(Data(1), Data(2), Data(3)): _*) == Data(6))
+    assert(sum(Data(1), Data(2), Data(3)) == Data(6))
+    assert(sum(List(Data(1), Data(2), Data(3)): _*) == Data(6))
   }
 }
