@@ -35,4 +35,9 @@ class MonoidTest extends FunSuite {
     assert(sum(Data(1), Data(2), Data(3)) == Data(6))
     assert(sum(List(Data(1), Data(2), Data(3)): _*) == Data(6))
   }
+
+  test("multiply") {
+    val multiply = Monoid.instance[Int](_ * _, 0)
+    6 assert_=== multiply.append(2, 3)
+  }
 }
