@@ -23,4 +23,25 @@ class MonadTest extends FunSuite {
   test("sequence") {
     Monad[Option].sequence(List(some(1), some(2), some(3))) assert_=== Some(List(1, 2, 3))
   }
+
+  test("flatmap") {
+    def sum[A[_] : Monad](x: Int, y: Int): A[Int] = {
+      val a = x.point[A]
+      val b = y.point[A]
+      a flatMap (m => b map (n => m + n))
+    }
+    3.some assert_=== sum[Option](1, 2)
+    List(3) assert_=== sum[List](1, 2)
+  }
+
+  test("for") {
+    def multiply[A[_] : Monad](x: Int, y: Int): A[Int] = {
+      for {
+        m <- x.point[A]
+        n <- y.point[A]
+      } yield m * n
+    }
+    3.some assert_=== multiply[Option](1, 3)
+    List(3) assert_=== multiply[List](1, 3)
+  }
 }
