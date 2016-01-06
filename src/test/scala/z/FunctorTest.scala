@@ -17,7 +17,10 @@ class FunctorTest extends FunSuite {
   }
 
   test("lift") {
-    val lifted: Option[Int] => Option[Int] = Functor[Option].lift((x: Int) => x * 2)
-    assert(lifted(Some(3)) contains 6)
+    val f1: Option[Int] => Option[Int] = ((x: Int) => x * 2) lift Monad[Option]
+    assert(f1(some(3)) contains 6)
+
+    val f2: Option[Int] => Option[Int] = Functor[Option].lift((x: Int) => x * 2)
+    assert(f2(Some(3)) contains 6)
   }
 }
