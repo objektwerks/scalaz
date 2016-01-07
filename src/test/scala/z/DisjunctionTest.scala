@@ -33,9 +33,9 @@ class DisjunctionTest extends FunSuite {
 
   test("get or else") {
     1.right[Int].getOrElse(0) assert_=== 1
-    "Failure".left[Int].getOrElse(0) assert_=== 0
+    "failure".left[Int].getOrElse(0) assert_=== 0
 
     1.right[Int] orElse 2.right[Int] assert_=== \/-(1)
-    "Failure".left[Int] orElse 2.right[Int] assert_=== \/-(2)
+    "failure".left[Int] orElse 2.right[Int] assert_=== \/-(2)
   }
 }
