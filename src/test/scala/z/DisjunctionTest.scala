@@ -6,7 +6,7 @@ import scalaz.Scalaz._
 import scalaz._
 
 class DisjunctionTest extends FunSuite {
-  test("disjunction") {
+  test("boolean") {
     false /\ true assert_=== false
     false \/ true assert_=== true
   }
@@ -22,12 +22,11 @@ class DisjunctionTest extends FunSuite {
     -\/("failure").merge assert_=== "failure"
   }
 
-  test("flatmap > for") {
-    1.right[String].flatMap(x => (x + 2).right) assert_=== \/-(3)
-
+  test("flatmap") {
+    1.right[Int].flatMap(x => (x + 2).right) assert_=== \/-(3)
     val r = for {
-      x <- 1.right[String]
-      y <- 2.right[String]
+      x <- 1.right[Int]
+      y <- 2.right[Int]
     } yield x + y
     r assert_=== \/-(3)
   }
@@ -36,7 +35,7 @@ class DisjunctionTest extends FunSuite {
     1.right[Int].getOrElse(0) assert_=== 1
     "Failure".left[Int].getOrElse(0) assert_=== 0
 
-    1.right[String] orElse 2.right[String] assert_=== \/-(1)
-    "Failure".left[Int] orElse 2.right[String] assert_=== \/-(2)
+    1.right[Int] orElse 2.right[Int] assert_=== \/-(1)
+    "Failure".left[Int] orElse 2.right[Int] assert_=== \/-(2)
   }
 }
