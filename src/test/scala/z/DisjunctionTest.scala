@@ -38,4 +38,13 @@ class DisjunctionTest extends FunSuite {
     1.right[Int] orElse 2.right[Int] assert_=== \/-(1)
     "failure".left[Int] orElse 2.right[Int] assert_=== \/-(2)
   }
+
+  test("fail fast") {
+    val r = for {
+      a <- 1.right[String]
+      b <- 0.right[String]
+      c <- if (b == 0) "divide.by.zero".left[Int] else (a / b).right[String]
+    } yield c
+    r assert_=== -\/("divide.by.zero")
+  }
 }
