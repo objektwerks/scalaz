@@ -3,7 +3,6 @@ package z
 import org.scalatest.FunSuite
 
 import scalaz.Scalaz._
-import scalaz._
 
 class CommonTest extends FunSuite {
   test("show") {
@@ -19,24 +18,6 @@ class CommonTest extends FunSuite {
     1.some =/= 2.some assert_=== true
   }
 
-  test("filter") {
-    some("true") assert_=== (1 < 2).option("true")
-    none[String] assert_=== (2 < 1).option("false")
-  }
-
-  test("option") {
-    1.some assert_=== Some(1)
-    none[Int] assert_=== None
-  }
-
-  test("get or else") {
-    1.some? 1 | 0 assert_=== 1
-    none? 1 | 0 assert_=== 0
-
-    1.some | 2 assert_=== 1
-    none | 2 assert_=== 2
-  }
-
   test("order") {
     1 > 2 assert_=== false
     1 min 2 assert_=== 1
@@ -50,35 +31,5 @@ class CommonTest extends FunSuite {
   test("combine") {
     3.some assert_=== 1.some |+| 2.some
     "scalaz".some assert_=== "scala".some |+| "z".some
-  }
-
-  test("enum") {
-    val enum = 'a' |-> 'z'
-    enum.byName(0) assert_=== 'a'
-    enum.byName(enum.length - 1) assert_=== 'z'
-    enum.head assert_=== 'a'
-    enum.last assert_=== 'z'
-    enum.contains('m') assert_=== true
-    'o'.succ assert_=== 'p'
-    'o'.pred assert_=== 'n'
-  }
-
-  test("bounded enum") {
-    implicitly[Enum[Int]].min assert_=== Some(-2147483648)
-    implicitly[Enum[Int]].max assert_=== Some(2147483647)
-  }
-
-  test("disjunction") {
-    "success".right.merge assert_=== "success"
-    "failure".left.merge assert_=== "failure"
-
-    \/.right("success").merge assert_=== "success"
-    \/.left("failure").merge assert_=== "failure"
-
-    \/-("success").merge assert_=== "success"
-    -\/("failure").merge assert_=== "failure"
-
-    false /\ true assert_=== false
-    false \/ true assert_=== true
   }
 }
