@@ -19,7 +19,6 @@ class MonadTransformer extends FunSuite {
     type Error = String
     type ErrorOr[A] = Error \/ A
     type ErrorOptionOr[A] = OptionT[ErrorOr, A]
-    val r = 42.point[ErrorOptionOr]
     val xy = for {
       x <- 10.point[ErrorOptionOr]
       y <- 32.point[ErrorOptionOr]
