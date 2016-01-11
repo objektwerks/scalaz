@@ -14,4 +14,16 @@ class MonadTransformer extends FunSuite {
     } yield x + y
     xy.getOrElse(0).sum assert_=== 42
   }
+
+  test("either option") {
+    type Error = String
+    type ErrorOr[A] = Error \/ A
+    type ErrorOptionOr[A] = OptionT[ErrorOr, A]
+    val r = 42.point[ErrorOptionOr]
+    val xy = for {
+      x <- 10.point[ErrorOptionOr]
+      y <- 32.point[ErrorOptionOr]
+    } yield x + y
+    xy.getOrElse(0).toList.sum assert_=== 42
+  }
 }
