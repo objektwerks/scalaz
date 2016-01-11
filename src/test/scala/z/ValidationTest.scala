@@ -15,7 +15,7 @@ case class Profile(name: String, email: String) {
   }
 
   def isValid: Boolean = {
-    val validation = (validateName(name).toValidationNel |@| validateEmail(email).toValidationNel) { Profile(_, _) }
+    val validation = (validateName(name).toValidationNel |@| validateEmail(email).toValidationNel) { (_ , _) }
     validation match {
       case Success(s) => true
       case Failure(f) => false
