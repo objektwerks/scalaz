@@ -19,6 +19,7 @@ class MonoidTest extends FunSuite {
   test("int") {
     3 assert_=== Monoid[Int].append(1, 2)
     3 assert_=== 1 |+| 2 |+| mzero[Int]
+    6 assert_=== 1 |+| 2 |+| 3
   }
 
   test("string") {
