@@ -10,11 +10,8 @@ class CommonTest extends FunSuite {
     1.show + "23" assert_=== "123"
   }
 
-  test("equal") {
+  test("equality") {
     Some(1) === Some(1) assert_=== true
-  }
-
-  test("unequal") {
     1.some =/= 2.some assert_=== true
   }
 
