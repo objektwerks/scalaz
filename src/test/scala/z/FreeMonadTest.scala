@@ -6,9 +6,13 @@ import scalaz.Scalaz._
 import scalaz._
 
 class FreeMonadTest extends FunSuite {
-  test("free option monad") {
+  test("monad ~> transformer") {
     val identityTransformer = new (Option ~> Option) {
       def apply[A](in: Option[A]): Option[A] = in
+    }
+
+    val listTransformer = new (Option ~> List) {
+      def apply[A](in: Option[A]): List[A] = in map (List(_)) getOrElse Nil
     }
 
     val freeOptionMonad = for {
@@ -18,5 +22,6 @@ class FreeMonadTest extends FunSuite {
     } yield x + y + z
 
     freeOptionMonad.foldMap(identityTransformer) assert_=== 6.some
+    freeOptionMonad.foldMap(listTransformer) assert_=== List(6)
   }
 }
