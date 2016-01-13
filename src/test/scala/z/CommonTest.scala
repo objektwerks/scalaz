@@ -27,9 +27,4 @@ class CommonTest extends FunSuite {
     2 gte 1 assert_=== true
     1 lte 2 assert_=== true
   }
-
-  test("combine") {
-    3.some assert_=== 1.some |+| 2.some
-    "scalaz".some assert_=== "scala".some |+| "z".some
-  }
 }
