@@ -1,4 +1,5 @@
-name := "objektwerks.scalaz"
+name := "scalaz"
+organization := "objektwerks"
 version := "1.0"
 scalaVersion := "2.11.8"
 ivyScala := ivyScala.value map { _.copy(overrideScalaVersion = true) }
@@ -7,8 +8,8 @@ resolvers ++= Seq(
 )
 libraryDependencies ++= {
   Seq(
-    "org.scalaz" % "scalaz-core_2.11" % "7.2.1",
-    "org.scalatest" % "scalatest_2.11" % "2.2.5" % "test"
+    "org.scalaz" % "scalaz-core_2.11" % "7.2.6",
+    "org.scalatest" % "scalatest_2.11" % "3.0.0" % "test"
   )
 }
 scalacOptions ++= Seq(
