@@ -3,12 +3,11 @@ organization := "objektwerks"
 version := "1.0"
 scalaVersion := "2.12.0"
 ivyScala := ivyScala.value map { _.copy(overrideScalaVersion = true) }
-resolvers ++= Seq(
-  "Scalaz Bintray" at "http://dl.bintray.com/scalaz/releases"
-)
 libraryDependencies ++= {
   Seq(
     "org.scalaz" % "scalaz-core_2.12" % "7.2.7",
+    "co.fs2" % "fs2-core_2.12" % "0.9.2",
+    "co.fs2" % "fs2-io_2.12" % "0.9.2",
     "org.scalatest" % "scalatest_2.12" % "3.0.0" % "test"
   )
 }
