@@ -26,4 +26,9 @@ class StreamTest extends FunSuite with Matchers {
   test("chunks") {
     Stream.chunk(Chunk.doubles(Array(1.0, 2.0, 3.0))).mapChunks { d => d.toDoubles }.fold(0.0)(_ + _).runLog.right.getOrElse(Vector(-1.0)) shouldBe Vector(6.0)
   }
+
+  test("errors") {
+    val task = Stream.eval(Task.delay { Integer.parseInt("three") })
+    try task.runLog.unsafeRun() catch { case e: Exception => assert(e.getMessage.length > 0) }
+  }
 }
