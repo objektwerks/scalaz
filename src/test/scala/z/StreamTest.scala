@@ -13,6 +13,7 @@ class StreamTest extends FunSuite with Matchers {
     Stream(1, 2, 3).filter(_ % 2 == 0).toList shouldBe List(2)
     Stream(1, 2, 3).fold(0)(_ + _).toList shouldBe List(6)
     Stream(none, 2.some, 3.some).collect{ case Some(x) => x}.toList shouldBe List(2, 3)
+    Stream.range(1, 4).intersperse(0).toList shouldBe List(1, 0, 2, 0, 3)
   }
 
   test("effectual") {
