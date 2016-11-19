@@ -1,7 +1,8 @@
 package z
 
-import fs2.Stream
+import fs2.{Stream, Task}
 import fs2.Stream._
+
 import scalaz.Scalaz._
 import org.scalatest.{FunSuite, Matchers}
 
@@ -19,6 +20,6 @@ class StreamTest extends FunSuite with Matchers {
   }
 
   test("effects") {
-
+    Stream.eval(Task.delay { 1 + 2 }).runLog.unsafeRun() shouldBe Vector(3)
   }
 }
