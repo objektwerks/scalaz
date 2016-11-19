@@ -1,5 +1,7 @@
 package z
 
+import java.util.concurrent.atomic.AtomicInteger
+
 import fs2.{Chunk, Stream, Task}
 import fs2.Stream._
 
@@ -30,5 +32,13 @@ class StreamTest extends FunSuite with Matchers {
   test("errors") {
     val task = Stream.eval(Task.delay { Integer.parseInt("three") })
     try task.runLog.unsafeRun() catch { case e: Exception => assert(e.getMessage.length > 0) }
+  }
+
+  test("resources") {
+    val counter = new AtomicInteger(0)
+    val acquire = Task.delay { counter.set(counter.incrementAndGet()); () }
+    val release = Task.delay { counter.set(counter.decrementAndGet()); () }
+    Stream.bracket(acquire)(_ => Stream(0), _ => release).runLog.unsafeRun() shouldBe Vector(0)
+    counter.get shouldBe 0
   }
 }
