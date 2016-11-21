@@ -2,7 +2,7 @@ package z
 
 import java.util.concurrent.atomic.AtomicInteger
 
-import fs2.{Chunk, Stream, Task}
+import fs2.{Chunk, Stream, Task, pipe}
 import fs2.Stream._
 
 import scalaz.Scalaz._
@@ -40,5 +40,12 @@ class StreamTest extends FunSuite with Matchers {
     val release = Task.delay { counter.set(counter.decrementAndGet()); () }
     Stream.bracket(acquire)(_ => Stream(0), _ => release).runLog.unsafeRun() shouldBe Vector(0)
     counter.get shouldBe 0
+  }
+
+  test("pipe") {
+    val pure = Stream.pure(1, 2, 3, 4)
+    pipe.take(3)(pure).toList shouldBe List(1, 2, 3)
+    pure.through(pipe.take(3)).toList shouldBe List(1, 2, 3)
+    pure.take(3).toList shouldBe List(1, 2, 3)
   }
 }
