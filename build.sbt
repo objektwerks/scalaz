@@ -1,14 +1,14 @@
 name := "scalaz"
 organization := "objektwerks"
 version := "0.1-SNAPSHOT"
-scalaVersion := "2.12.1"
+scalaVersion := "2.12.2"
 ivyScala := ivyScala.value map { _.copy(overrideScalaVersion = true) }
 libraryDependencies ++= {
   Seq(
-    "org.scalaz" % "scalaz-core_2.12" % "7.2.7",
-    "co.fs2" % "fs2-core_2.12" % "0.9.2",
-    "co.fs2" % "fs2-io_2.12" % "0.9.2",
-    "org.scalatest" % "scalatest_2.12" % "3.0.0" % "test"
+    "org.scalaz" % "scalaz-core_2.12" % "7.2.13",
+    "co.fs2" % "fs2-core_2.12" % "0.9.7",
+    "co.fs2" % "fs2-io_2.12" % "0.9.7",
+    "org.scalatest" % "scalatest_2.12" % "3.0.3" % "test"
   )
 }
 scalacOptions ++= Seq(
