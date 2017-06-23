@@ -5,7 +5,7 @@ import org.scalatest.FunSuite
 import scalaz._
 import scalaz.Scalaz._
 
-class MonadTransformer extends FunSuite {
+class MonadTransformerTest extends FunSuite {
   test("list option") {
     type ListOption[A] = OptionT[List, A]
     val xy = for {
