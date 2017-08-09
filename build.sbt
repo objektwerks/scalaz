@@ -1,8 +1,7 @@
 name := "scalaz"
 organization := "objektwerks"
 version := "0.1-SNAPSHOT"
-scalaVersion := "2.12.2"
-ivyScala := ivyScala.value map { _.copy(overrideScalaVersion = true) }
+scalaVersion := "2.12.3"
 libraryDependencies ++= {
   Seq(
     "org.scalaz" % "scalaz-core_2.12" % "7.2.13",
