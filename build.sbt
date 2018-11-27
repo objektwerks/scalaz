@@ -5,10 +5,6 @@ scalaVersion := "2.12.7"
 libraryDependencies ++= {
   Seq(
     "org.scalaz" % "scalaz-core_2.12" % "7.2.26",
-    "co.fs2" % "fs2-core_2.12" % "0.10.5",
-    "co.fs2" % "fs2-io_2.12" % "0.10.5",
-    "org.typelevel" % "cats-core_2.12" % "1.3.1",
-    "org.typelevel" % "cats-effect_2.12" % "0.10.1",
     "org.scalatest" % "scalatest_2.12" % "3.0.5" % "test"
   )
 }
