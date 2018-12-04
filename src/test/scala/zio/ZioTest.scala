@@ -15,6 +15,6 @@ class ZioTest extends FunSuite with Matchers with RTS {
   }
 
   test("failure") {
-    unsafeRun( fileToString("build.bat").catchAll(_ => fileToString("build.sbt")) )
+    unsafeRun( fileToString("build.bat").catchAll(_ => fileToString("build.sbt")) ).nonEmpty shouldBe true
   }
 }
