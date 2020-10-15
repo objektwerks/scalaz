@@ -1,11 +1,11 @@
 package z
 
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 
 import scalaz.Scalaz._
 import scalaz._
 
-class FreeMonadTest extends FunSuite {
+class FreeMonadTest extends AnyFunSuite {
   test("monad ~> transformer") {
     val identityTransformer = new (Option ~> Option) {
       def apply[A](in: Option[A]): Option[A] = in

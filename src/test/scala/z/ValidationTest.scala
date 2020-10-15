@@ -1,6 +1,6 @@
 package z
 
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 
 import scalaz.Scalaz._
 import scalaz._
@@ -23,7 +23,7 @@ case class Profile(name: String, email: String) {
   }
 }
 
-class ValidationTest extends FunSuite {
+class ValidationTest extends AnyFunSuite {
   test("valid profile") {
     val profile = Profile("Barney Rebel", "barney.rebel@gmail.com")
     assert(profile.isValid)

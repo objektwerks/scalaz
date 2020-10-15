@@ -1,6 +1,6 @@
 package z
 
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 
 import scalaz._
 
@@ -17,7 +17,7 @@ class PersonLens {
   val zipLens = Lens.lensu[Address, Int] ((a, value) => a.copy(zip = value), _.zip)
 }
 
-class LensTest extends FunSuite {
+class LensTest extends AnyFunSuite {
   val person = new Person("Jack Sparrow", new Address("33 Sailor Way", "Prirate Cove", "FL", 33399))
   val personLens = new PersonLens
 

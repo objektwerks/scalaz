@@ -1,11 +1,11 @@
 package z
 
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 
 import scalaz._
 import scalaz.Scalaz._
 
-class MonadTransformerTest extends FunSuite {
+class MonadTransformerTest extends AnyFunSuite {
   test("list option") {
     type ListOption[A] = OptionT[List, A]
     val xy = for {

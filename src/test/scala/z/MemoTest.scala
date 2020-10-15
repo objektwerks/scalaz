@@ -1,11 +1,11 @@
 package z
 
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 
 import scala.annotation.tailrec
 import scalaz._
 
-class MemoTest extends FunSuite {
+class MemoTest extends AnyFunSuite {
   val seedNumber: Long = 39
   val targetNumber: BigInt = BigInt(63245986)
   var computeCount: Int = 0

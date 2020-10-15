@@ -1,24 +1,22 @@
 package z
 
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.matchers.should.Matchers
 
 import scalaz.Scalaz._
 import scalaz._
 
-class EnumTest extends FunSuite  {
+class EnumTest extends AnyFunSuite with Matchers {
   test("enum") {
     val enum = 'a' |-> 'z'
-    enum.byName(0) assert_=== 'a'
-    enum.byName(enum.length - 1) assert_=== 'z'
-    enum.head assert_=== 'a'
-    enum.last assert_=== 'z'
-    enum.contains('m') assert_=== true
-    'o'.succ assert_=== 'p'
-    'o'.pred assert_=== 'n'
+    enum.headOption.get shouldBe 'a'
+    enum.lastOption.get shouldBe 'z'
+    'o'.succ shouldBe 'p'
+    'o'.pred shouldBe 'n'
   }
 
   test("bounded enum") {
-    implicitly[Enum[Int]].min assert_=== Some(-2147483648)
-    implicitly[Enum[Int]].max assert_=== Some(2147483647)
+    implicitly[Enum[Int]].min shouldBe Some(-2147483648)
+    implicitly[Enum[Int]].max shouldBe Some(2147483647)
   }
 }

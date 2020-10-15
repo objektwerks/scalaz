@@ -1,10 +1,10 @@
 package z
 
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 
 import scalaz.Scalaz._
 
-class OptionTest extends FunSuite {
+class OptionTest extends AnyFunSuite {
   test("filter") {
     some("true") assert_=== (1 < 2).option("true")
     none[String] assert_=== (2 < 1).option("false")

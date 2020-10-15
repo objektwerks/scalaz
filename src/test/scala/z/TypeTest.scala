@@ -1,6 +1,6 @@
 package z
 
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 
 trait Printable[A] {
   def format(value: A): String
@@ -47,7 +47,7 @@ object Dog {
     }
   }
 }
-class TypeTest extends FunSuite {
+class TypeTest extends AnyFunSuite {
   test("printable") {
     import PrintSyntax._
 

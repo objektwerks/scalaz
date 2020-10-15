@@ -1,6 +1,6 @@
 Scalaz
 ------
->The purpose of this project is to test Scalaz features.
+>This project tests Scalaz features.
 
 Test
 ----

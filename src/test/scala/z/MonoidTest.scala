@@ -1,6 +1,6 @@
 package z
 
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 
 import scalaz.Scalaz._
 import scalaz._
@@ -13,7 +13,7 @@ object Data {
   implicit def monoid = Monoid.instance[Data](_ + _, Data(0))
 }
 
-class MonoidTest extends FunSuite {
+class MonoidTest extends AnyFunSuite {
   def sum[A: Monoid](items: A*): A = items.foldLeft(mzero[A]){ _ |+| _ }
 
   test("int") {

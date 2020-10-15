@@ -1,11 +1,11 @@
 package z
 
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 
 import scalaz.Scalaz._
 import scalaz._
 
-class FunctorTest extends FunSuite {
+class FunctorTest extends AnyFunSuite {
   test("map") {
     val f1 = (x: Int) => x + 1
     val f2 = (y: Int) => y * 2

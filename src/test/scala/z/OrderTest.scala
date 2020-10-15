@@ -1,10 +1,10 @@
 package z
 
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 
 import scalaz.Scalaz._
 
-class OrderTest extends FunSuite {
+class OrderTest extends AnyFunSuite {
   test("order") {
     1 > 2 assert_=== false
     1 min 2 assert_=== 1
