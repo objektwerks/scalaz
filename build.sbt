@@ -5,6 +5,6 @@ scalaVersion := "2.13.11"
 libraryDependencies ++= {
   Seq(
     "org.scalaz" %% "scalaz-core" % "7.3.7",
-    "org.scalatest" %% "scalatest" % "3.2.15" % Test
+    "org.scalatest" %% "scalatest" % "3.2.16" % Test
   )
 }
