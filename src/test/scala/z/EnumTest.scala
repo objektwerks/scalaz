@@ -8,9 +8,9 @@ import scalaz._
 
 class EnumTest extends AnyFunSuite with Matchers {
   test("enum") {
-    val enum = 'a' |-> 'z'
-    enum.headOption.get shouldBe 'a'
-    enum.lastOption.get shouldBe 'z'
+    val enumeration = 'a' |-> 'z'
+    enumeration.headOption.get shouldBe 'a'
+    enumeration.lastOption.get shouldBe 'z'
     'o'.succ shouldBe 'p'
     'o'.pred shouldBe 'n'
   }
