@@ -2,10 +2,10 @@ package z
 
 import org.scalatest.funsuite.AnyFunSuite
 
-import scalaz.Scalaz._
-import scalaz._
+import scalaz.Scalaz.*
+import scalaz.*
 
-class FreeMonadTest extends AnyFunSuite {
+class FreeMonadTest extends AnyFunSuite:
   test("monad ~> transformer") {
     val identityTransformer = new (Option ~> Option) {
       def apply[A](in: Option[A]): Option[A] = in
@@ -24,4 +24,3 @@ class FreeMonadTest extends AnyFunSuite {
     freeOptionMonad.foldMap(identityTransformer) assert_=== 6.some
     freeOptionMonad.foldMap(listTransformer) assert_=== List(6)
   }
-}
