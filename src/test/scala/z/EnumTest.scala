@@ -3,10 +3,10 @@ package z
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-import scalaz.Scalaz._
-import scalaz._
+import scalaz.Scalaz.*
+import scalaz.*
 
-class EnumTest extends AnyFunSuite with Matchers {
+class EnumTest extends AnyFunSuite with Matchers:
   test("enum") {
     val enumeration = 'a' |-> 'z'
     enumeration.headOption.get shouldBe 'a'
@@ -19,4 +19,3 @@ class EnumTest extends AnyFunSuite with Matchers {
     implicitly[Enum[Int]].min shouldBe Some(-2147483648)
     implicitly[Enum[Int]].max shouldBe Some(2147483647)
   }
-}
