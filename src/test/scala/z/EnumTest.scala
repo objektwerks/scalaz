@@ -3,8 +3,8 @@ package z
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-import scalaz.Scalaz.*
 import scalaz.*
+import scalaz.Scalaz.*
 
 class EnumTest extends AnyFunSuite with Matchers:
   test("enum") {

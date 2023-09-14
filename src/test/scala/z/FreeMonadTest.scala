@@ -2,8 +2,8 @@ package z
 
 import org.scalatest.funsuite.AnyFunSuite
 
-import scalaz.Scalaz.*
 import scalaz.*
+import scalaz.Scalaz.*
 
 class FreeMonadTest extends AnyFunSuite:
   test("monad ~> transformer") {

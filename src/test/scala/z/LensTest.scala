@@ -2,7 +2,7 @@ package z
 
 import org.scalatest.funsuite.AnyFunSuite
 
-import scalaz._
+import scalaz.*
 
 final case class Person(name: String, address: Address)
 
