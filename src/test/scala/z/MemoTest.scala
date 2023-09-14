@@ -3,9 +3,9 @@ package z
 import org.scalatest.funsuite.AnyFunSuite
 
 import scala.annotation.tailrec
-import scalaz._
+import scalaz.*
 
-class MemoTest extends AnyFunSuite {
+class MemoTest extends AnyFunSuite:
   val seedNumber: Long = 39
   val targetNumber: BigInt = BigInt(63245986)
   var computeCount: Int = 0
@@ -34,4 +34,3 @@ class MemoTest extends AnyFunSuite {
     assert(memo(seedNumber) == targetNumber) // Cached value returned.
     assert(computeCount == 1) // Computed only once.
   }
-}
