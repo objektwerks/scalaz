@@ -2,18 +2,16 @@ package z
 
 import org.scalatest.funsuite.AnyFunSuite
 
-import scalaz.Scalaz._
-import scalaz._
+import scalaz.*
+import scalaz.Scalaz.*
 
-case class Data(n: Int) {
+final case class Data(n: Int):
   def +(data: Data): Data = Data(this.n + data.n)
-}
 
-object Data {
+object Data:
   given Monoid[Data] = Monoid.instance[Data](_ + _, Data(0))
-}
 
-class MonoidTest extends AnyFunSuite {
+class MonoidTest extends AnyFunSuite:
   def sum[A: Monoid](items: A*): A = items.foldLeft(mzero[A]){ _ |+| _ }
 
   test("int") {
@@ -41,4 +39,3 @@ class MonoidTest extends AnyFunSuite {
     val multiply = Monoid.instance[Int](_ * _, 0)
     6 assert_=== multiply.append(2, 3)
   }
-}
