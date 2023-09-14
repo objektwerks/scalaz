@@ -7,11 +7,11 @@ trait Printable[A] {
 }
 
 object PrintDefaults {
-  implicit val printableString = new Printable[String] {
+  given Printable[String] = new Printable[String] {
     def format(value: String): String = value.toString
   }
 
-  implicit val printableInt = new Printable[Int] {
+  given Printable[Int] = new Printable[Int] {
     def format(value: Int): String = value.toString
   }
 }
@@ -41,7 +41,7 @@ object PrintSyntax {
 case class Dog(name: String, age: Int, color: String)
 
 object Dog {
-  implicit val printableDog = new Printable[Dog] {
+  given Printable[Dog] = new Printable[Dog] {
     def format(dog: Dog): String = {
       s"Name: ${dog.name}, Age: ${dog.age}, Color: ${dog.color}."
     }
@@ -49,7 +49,7 @@ object Dog {
 }
 class TypeTest extends AnyFunSuite {
   test("printable") {
-    import PrintSyntax._
+    import PrintSyntax.*
 
     val dog = Dog("whilhelm", 33, "white")
     assert(dog.format == "Name: whilhelm, Age: 33, Color: white.")
