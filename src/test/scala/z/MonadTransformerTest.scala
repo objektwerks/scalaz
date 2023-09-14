@@ -2,10 +2,10 @@ package z
 
 import org.scalatest.funsuite.AnyFunSuite
 
-import scalaz._
-import scalaz.Scalaz._
+import scalaz.*
+import scalaz.Scalaz.*
 
-class MonadTransformerTest extends AnyFunSuite {
+class MonadTransformerTest extends AnyFunSuite:
   test("list option") {
     type ListOption[A] = OptionT[List, A]
     val xy = for {
@@ -25,4 +25,3 @@ class MonadTransformerTest extends AnyFunSuite {
     } yield x + y
     xy.getOrElse(0).toList.sum assert_=== 42
   }
-}
