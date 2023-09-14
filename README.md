@@ -1,6 +1,6 @@
 Scalaz
 ------
->Scalaz feature tests.
+>Scalaz feature tests using Scala 3.
 
 Build
 -----
