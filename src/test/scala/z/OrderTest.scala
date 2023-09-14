@@ -2,9 +2,9 @@ package z
 
 import org.scalatest.funsuite.AnyFunSuite
 
-import scalaz.Scalaz._
+import scalaz.Scalaz.*
 
-class OrderTest extends AnyFunSuite {
+class OrderTest extends AnyFunSuite:
   test("order") {
     1 > 2 assert_=== false
     1 min 2 assert_=== 1
@@ -14,4 +14,3 @@ class OrderTest extends AnyFunSuite {
     2 gte 1 assert_=== true
     1 lte 2 assert_=== true
   }
-}
