@@ -8,16 +8,15 @@ case class Person(name: String, address: Address)
 
 case class Address(street: String, city: String, state: String, zip: Int)
 
-class PersonLens {
+final class PersonLens:
   val nameLens = Lens.lensu[Person, String] ((a, value) => a.copy(name = value),  _.name)
   val addressLens = Lens.lensu[Person, Address] ((a, value) => a.copy(address = value), _.address)
   val streetLens = Lens.lensu[Address, String] ((a, value) => a.copy(street = value), _.street)
   val cityLens = Lens.lensu[Address, String] ((a, value) => a.copy(city = value), _.city)
   val stateLens = Lens.lensu[Address, String] ((a, value) => a.copy(state = value), _.state)
   val zipLens = Lens.lensu[Address, Int] ((a, value) => a.copy(zip = value), _.zip)
-}
 
-class LensTest extends AnyFunSuite {
+class LensTest extends AnyFunSuite:
   val person = new Person("Jack Sparrow", new Address("33 Sailor Way", "Prirate Cove", "FL", 33399))
   val personLens = new PersonLens
 
@@ -48,4 +47,3 @@ class LensTest extends AnyFunSuite {
     val addressZipLens = personLens.zipLens compose personLens.addressLens
     assert(addressZipLens.get(person) == 33399)
   }
-}
