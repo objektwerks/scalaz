@@ -1,6 +1,10 @@
 Scalaz
 ------
->This project tests Scalaz features.
+>Scalaz feature tests.
+
+Build
+-----
+1. sbt clean compile
 
 Test
 ----
