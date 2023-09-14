@@ -3,10 +3,10 @@ package z
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-import scalaz.Scalaz._
-import scalaz._
+import scalaz.Scalaz.*
+import scalaz.*
 
-class DisjunctionTest extends AnyFunSuite with Matchers {
+class DisjunctionTest extends AnyFunSuite with Matchers:
   test("boolean") {
     false /\ true shouldBe false
     false \/ true shouldBe true
@@ -48,4 +48,3 @@ class DisjunctionTest extends AnyFunSuite with Matchers {
     } yield c
     r shouldBe -\/("divide.by.zero")
   }
-}
