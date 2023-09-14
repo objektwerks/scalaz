@@ -10,7 +10,7 @@ case class Data(n: Int) {
 }
 
 object Data {
-  implicit def monoid = Monoid.instance[Data](_ + _, Data(0))
+  given Monoid[Data] = Monoid.instance[Data](_ + _, Data(0))
 }
 
 class MonoidTest extends AnyFunSuite {
