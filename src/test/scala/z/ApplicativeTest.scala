@@ -2,10 +2,10 @@ package z
 
 import org.scalatest.funsuite.AnyFunSuite
 
-import scalaz._
-import scalaz.Scalaz._
+import scalaz.*
+import scalaz.Scalaz.*
 
-class ApplicativeTest extends AnyFunSuite {
+class ApplicativeTest extends AnyFunSuite:
   test("apply") {
     val incr = (x: Int) => x + 1
     Applicative[Option].ap(Some(2))(Some(incr)) assert_=== 3.some
@@ -31,4 +31,3 @@ class ApplicativeTest extends AnyFunSuite {
     (3.some |@| 3.some) {_ + _} assert_=== 6.some
     (List(1, 2) |@| List(3, 4)) {_ + _} assert_=== List(4, 5, 5, 6)
   }
-}
