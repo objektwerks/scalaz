@@ -4,9 +4,9 @@ import org.scalatest.funsuite.AnyFunSuite
 
 import scalaz._
 
-case class Person(name: String, address: Address)
+final case class Person(name: String, address: Address)
 
-case class Address(street: String, city: String, state: String, zip: Int)
+final case class Address(street: String, city: String, state: String, zip: Int)
 
 final class PersonLens:
   val nameLens = Lens.lensu[Person, String] ((a, value) => a.copy(name = value),  _.name)
