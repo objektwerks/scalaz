@@ -28,7 +28,7 @@ class MemoTest extends AnyFunSuite {
 
   test("memoize") {
     val memo = Memo.immutableHashMapMemo {
-      n: Long => computeFibonacci(n)
+      (n: Long) => computeFibonacci(n)
     }
     assert(memo(seedNumber) == targetNumber)  // Computed and cached.
     assert(memo(seedNumber) == targetNumber) // Cached value returned.
