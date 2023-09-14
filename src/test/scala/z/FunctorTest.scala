@@ -2,10 +2,10 @@ package z
 
 import org.scalatest.funsuite.AnyFunSuite
 
-import scalaz.Scalaz._
-import scalaz._
+import scalaz.Scalaz.*
+import scalaz.*
 
-class FunctorTest extends AnyFunSuite {
+class FunctorTest extends AnyFunSuite:
   test("map") {
     val f1 = (x: Int) => x + 1
     val f2 = (y: Int) => y * 2
@@ -23,4 +23,3 @@ class FunctorTest extends AnyFunSuite {
     val f2: Option[Int] => Option[Int] = Functor[Option].lift((x: Int) => x * 2)
     assert(f2(Some(3)) contains 6)
   }
-}
