@@ -16,18 +16,15 @@ final case class Profile(name: String, email: String):
 
   def isValid: Boolean =
     val validation = (validateName(name).toValidationNel |@| validateEmail(email).toValidationNel) { (_ , _) }
-    validation match {
+    validation match
       case Success(_) => true
       case Failure(_) => false
-    }
 
-class ValidationTest extends AnyFunSuite:
-  test("valid profile") {
+final class ValidationTest extends AnyFunSuite:
+  test("valid profile"):
     val profile = Profile("Barney Rebel", "barney.rebel@gmail.com")
     assert(profile.isValid)
-  }
 
-  test("invalid profile") {
+  test("invalid profile"):
     val profile = Profile("", "")
     assert(!profile.isValid)
-  }
