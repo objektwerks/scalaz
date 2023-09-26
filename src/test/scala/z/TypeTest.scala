@@ -13,15 +13,15 @@ object PrintDefaults:
     def format(value: Int): String = value.toString
 
 object Print:
-  def format[A] (value: A) (implicit formatter: Printable[A]): String = formatter.format(value)
+  def format[A] (value: A) (using formatter: Printable[A]): String = formatter.format(value)
 
-  def print[A] (value: A) (implicit printer: Printable[A]): Unit = println(printer.format(value))
+  def print[A] (value: A) (using printer: Printable[A]): Unit = println(printer.format(value))
 
 object PrintSyntax:
   extension [A](value: A)
-    def format(implicit printable: Printable[A]): String = printable.format(value)
+    def format(using printable: Printable[A]): String = printable.format(value)
 
-    def print(implicit printable: Printable[A]): Unit = println(printable.format(value))
+    def print(using printable: Printable[A]): Unit = println(printable.format(value))
 
 final case class Dog(name: String, age: Int, color: String)
 
