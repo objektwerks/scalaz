@@ -16,11 +16,11 @@ final class PersonLens:
   val stateLens = Lens.lensu[Address, String] ((a, value) => a.copy(state = value), _.state)
   val zipLens = Lens.lensu[Address, Int] ((a, value) => a.copy(zip = value), _.zip)
 
-class LensTest extends AnyFunSuite:
+final class LensTest extends AnyFunSuite:
   val person = new Person("Jack Sparrow", new Address("33 Sailor Way", "Prirate Cove", "FL", 33399))
   val personLens = new PersonLens
 
-  test("person lens") {
+  test("person lens"):
     val name = personLens.nameLens.get(person)
     assert(name == person.name)
 
@@ -38,12 +38,10 @@ class LensTest extends AnyFunSuite:
 
     val zip = personLens.zipLens.get(person.address)
     assert(zip == person.address.zip)
-  }
 
-  test("composite lens") {
+  test("composite lens"):
     val personZipLens = personLens.addressLens andThen personLens.zipLens
     assert(personZipLens.get(person) == 33399)
 
     val addressZipLens = personLens.zipLens compose personLens.addressLens
     assert(addressZipLens.get(person) == 33399)
-  }
