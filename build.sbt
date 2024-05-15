@@ -1,7 +1,7 @@
 name := "scalaz"
 organization := "objektwerks"
 version := "0.1-SNAPSHOT"
-scalaVersion := "3.4.2-RC1"
+scalaVersion := "3.4.2"
 libraryDependencies ++= {
   Seq(
     "org.scalaz" %% "scalaz-core" % "7.3.8",
